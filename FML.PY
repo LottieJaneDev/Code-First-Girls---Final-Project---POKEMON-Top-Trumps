@@ -18,7 +18,6 @@ def random_pokemon():
     }
 
 
-# noinspection PyGlobalUndefined
 def choose_pokemon():
     random_pokemon_1 = random_pokemon()
     random_pokemon_2 = random_pokemon()
@@ -72,14 +71,15 @@ def computer_stat():
         return 'experience'
 
 
-# def finish_game():
-#     end_choice = input('Would you like to play another round? \n Yes or No \n')
-#     if end_choice == 'y' or end_choice == 'yes':
-#         print('\n')
-#         choose_pokemon()
-#         play_game()
-#     else:
-#         return
+def finish_game():
+    end_choice = input('Would you like to play another round? \n Yes or No \n')
+
+    if end_choice == 'y' or end_choice == 'yes':
+        print('\n')
+        choose_pokemon()
+
+    else:
+        return
 
 
 def introduction():
@@ -96,7 +96,6 @@ def introduction():
 
 
 def play_game():
-
     my_score = 0
     computer_score = 0
 
@@ -132,17 +131,16 @@ def play_game():
 
         if your_stat_score > computer_stat_score:
             my_score += 1
-            print('Yes! You won this round! The score is {} - {}\n'.format(my_score, computer_score))
+            print('Yes! You won this round! The score was {} - {} to you!'.format(my_score, computer_score))
         if your_stat_score < computer_stat_score:
             computer_score += 1
-            print('Sorry, you lost this round! The score is {} - {}\n'.format(my_score, computer_score))
+            print('Sorry, you lost this round! The score was {} - {} to the computer'.format(my_score, computer_score))
         if your_stat_score == computer_stat_score:
             computer_score += 1
             my_score += 1
-            print('It\'s a tie! The score is {} - {}\n'.format(my_score, computer_score))
+            print('It\'s a tie! The score is {} - {}!'.format(my_score, computer_score))
 
-        return my_score, computer_score
-        # finish_game()
+        finish_game()
 
     else:
         print('Bad luck! You lost the coin toss :( \n The computer will now choose which stat to play with...')
@@ -168,38 +166,16 @@ def play_game():
 
         if your_stat_score > computer_stat_score:
             my_score += 1
-            print('Yes! You won this round! The score is {} - {}\n'.format(my_score, computer_score))
+            print('Yes! You won this round! The score was {} - {} to you!'.format(my_score, computer_score))
         if your_stat_score < computer_stat_score:
             computer_score += 1
-            print('Sorry, you lost this round! The score is {} - {} \n'.format(my_score, computer_score))
+            print('Sorry, you lost this round! The score was {} - {} to the computer'.format(my_score, computer_score))
         if your_stat_score == computer_stat_score:
             computer_score += 1
             my_score += 1
-            print('It\'s a tie! The score is {} - {}\n'.format(my_score, computer_score))
+            print('It\'s a tie! The score is {} - {}!'.format(my_score, computer_score))
 
-        return my_score, computer_score
-        # finish_game()
-
-
-def run():
-
-    introduction()
-    choose_pokemon()
-
-    with open("scores.txt", "w+") as scores_file:
-
-        scores_list = []
-
-        for rounds in range(0, 2):
-            round_scores = play_game()
-            scores_list.append(round_scores)
-
-        for score in scores_list:
-            scores_file.write('(My Score, Computer Score):' + '%s\n' % str(score))
-
-    # print('The final score is \n YOU = {} \n COMPUTER = {}'.format())
+        finish_game()
 
 
-run()
-
-
+introduction()
