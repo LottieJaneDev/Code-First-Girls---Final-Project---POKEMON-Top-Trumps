@@ -82,21 +82,7 @@ def finish_game():
         return
 
 
-def introduction():
-    choice = input('WELCOME! Are you ready to play Pokemon Top Trumps?! (Yes / No)\n')
-    if choice == 'yes' or choice == 'y' or choice == 'Yes':
-        print('Great! Lets go!')
-        choose_pokemon()
-    if choice == 'no' or choice == 'n' or choice == 'No':
-        print('Okay! Maybe we\'ll see you again soon! Goodbye!')
-        sys.exit(0)
-    if choice != 'yes' and choice != 'y' and choice != 'Yes' and choice != 'no' and choice != 'n' and choice != 'No':
-        print('I\'m sorry, I don\'t understand your response')
-        introduction()
-
-
 def play_game():
-
     my_score = 0
     computer_score = 0
 
@@ -179,4 +165,17 @@ def play_game():
         finish_game()
 
 
-introduction()
+def run():
+    choice = input('WELCOME! Are you ready to play Pokemon Top Trumps?! (Yes / No)\n')
+    if choice == 'yes' or choice == 'y' or choice == 'Yes':
+        print('Great! Lets go!')
+        choose_pokemon()
+    if choice == 'no' or choice == 'n' or choice == 'No':
+        print('Okay! Maybe we\'ll see you again soon! Goodbye!')
+        sys.exit(0)
+    if choice != 'yes' and choice != 'y' and choice != 'Yes' and choice != 'no' and choice != 'n' and choice != 'No':
+        print('I\'m sorry, I don\'t understand your response')
+        run()
+
+
+run()
