@@ -1,4 +1,4 @@
-# Code-First-Girls---Final-Project---Top-Trumps
+# Code-First-Girls---Final-Project---POKEMON TOP TRUMPS
 
 This is my final project for the Code First Girls 8 week Coding Kickstarter Course in Python. 
 
