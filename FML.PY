@@ -119,14 +119,17 @@ def play_game():
         if your_stat_score > computer_stat_score:
             my_score += 1
             print('Yes! You won this round! The current score is {} - {} to you!\n'.format(my_score, computer_score))
+            time.sleep(2)
         if your_stat_score < computer_stat_score:
             computer_score += 1
             print('Sorry, you lost this round! The current score is {} - {} to the computer\n'.format(my_score,
                                                                                                       computer_score))
+            time.sleep(2)
         if your_stat_score == computer_stat_score:
             computer_score += 1
             my_score += 1
             print('It\'s a tie! The current score is {} - {}!\n'.format(my_score, computer_score))
+            time.sleep(2)
 
         return my_score, computer_score
 
@@ -137,7 +140,7 @@ def play_game():
         print(' * Experience - the Base Experience points you will gain for defeating this Pokemon '
               '\n * Height - the height of your Pokemon (tallest wins!) '
               '\n * Weight - the weight of your Pokemon (heaviest wins!)\n')
-
+        time.sleep(3)
         computer_stat_choice = computer_stat()
         print('The computer has chosen {}!\n'.format(computer_stat_choice.upper()))
 
@@ -152,14 +155,17 @@ def play_game():
         if your_stat_score > computer_stat_score:
             my_score += 1
             print('Yes! You won this round! The current score is {} - {} to you!\n'.format(my_score, computer_score))
+            time.sleep(2)
         if your_stat_score < computer_stat_score:
             computer_score += 1
             print('Sorry, you lost this round! The current score is {} - {} to the computer\n'.format(my_score,
                                                                                                       computer_score))
+            time.sleep(2)
         if your_stat_score == computer_stat_score:
             computer_score += 1
             my_score += 1
             print('It\'s a tie! The current score is {} - {}!\n'.format(my_score, computer_score))
+            time.sleep(2)
 
             return my_score, computer_score
 
@@ -184,6 +190,8 @@ def run():
 
         if computer_score > my_score:
             print('Bad luck! The computer beat you this time :(')
+        if computer_score == my_score:
+            print('It was a draw! Well played :)')
         else:
             print('CONGRATULATIONS! YOU WON THE GAME!!! :D')
 
