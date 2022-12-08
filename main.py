@@ -53,7 +53,23 @@ def choose_pokemon():
                                                                                         my_pokemon['experience']))
     print(your_stats)
     play_game()
-
+# def find_pokemon():
+#     print('Your Pokemon choices are:')
+#     pokemon_data = []
+#     for x in range(3):
+#         random_pokemon = generate_random_pokemon()
+#         pokemon_data.append(random_pokemon)
+#         print((x+1), random_pokemon['name'])
+#     pokemon_choice = str(input('Which one would you like to choose? Select a number... \n'))
+#     if pokemon_choice == '1':
+#         return pokemon_data[0]
+#     if pokemon_choice == '2':
+#         return pokemon_data[1]
+#     if pokemon_choice == '3':
+#         return pokemon_data[2]
+#     else:
+#         print('You have entered an incorrect value, let\'s try again \n')
+#         run()
 
 def heads_tails():
     answer = input("To make it fair, we will toss a coin to decide who chooses which stat to do battle with! "
