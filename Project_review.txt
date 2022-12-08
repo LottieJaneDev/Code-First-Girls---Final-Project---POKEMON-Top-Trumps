@@ -1,0 +1,88 @@
+CFG FINAL PROJECT PRESENTATION
+
+What was the original plan for the project?
+
+The plan for the project was to create a working, bug free game of Top Trumps using an API
+
+The project had to have these features as a minimum:
+
+* Generate a random number to choose both players cards
+* Get that data from the API and store/use it
+* Ask the player which stat from the API data they want to use
+* Compare the user & computers card stats to decide who wins the game
+
+
+Firstly, using the MOSCOW technique I decided which features the project would have.
+
+MUST:
+
+    - ✅ (to pass) The above listed minimum features
+    - ✅ Use different stats - I added experience (got confused about how stats that weren’t integers would be compared so didn’t go there)
+    - ✅ Allow the user to choose which stat they want to play with
+    - ✅ Display the name and stats for the Pokemon before the player chooses
+    - ✅ Let the computer choose a random stat to play with
+    - ✅ Have game creator details at the end
+
+SHOULD:
+
+    - ✅ Return a choice of characters to choose from
+    - ✅ Restart program if the user input isn’t recognised
+    - ✅ Play multiple rounds
+    - ✅ Display the score at the end of each round
+    - ✅ Tally the score rounds and declare the winner at the end
+    - ✅ Display the round number each time
+    - ✅ Have the option to play again at the end of the game
+    - ❌ Use a different API (tried to but couldn’t find a working one, by the time I saw the links in the project brief I was too far in!)
+    - ❌ Have the computer choose heads or tails in turn (didn’t think of this until too late) then revert back to user to choose stat if computer loses coin toss
+
+COULD:
+
+    - ✅ Have time delays between the text displaying
+    - ✅ A coin toss to decide who gets to choose the stat for the round
+    - ✅ Welcome message asking the user if they are ready to play the game
+    - ❌ Ask player to enter name at the start and use throughout the game
+    - ❌ Display a list of each round and who won alongside the final score
+
+WOULD:
+
+    - ❌ Record high scores for players and store them in a file
+    - ❌ All major stats added as a choice
+    - ❌ User can choose which API they want to use - Pokemon, Harry Potter, Star Wars
+
+What does the project actually do?
+
+1. Welcome message - asking user if they want to play - can say yes and continue or no and exit out the game
+2. Well spaced and has time delays between messages to allow the user to read the prompts
+3. Asks the user to choose from 3 random Pokemon
+4. Displays the user choice, their Pokemon’s stats
+5. Displays the computers choice
+6. Asks the user to choose heads or tails for the coin toss
+7. Displays the result of the coin toss
+8. If the user wins, they choose a stat to play with. If the user loses, the computer chooses the stat to play with
+9. The comparison of the user & the computers stats are displayed
+10. A message proclaiming who won and the current score is displayed
+11. The next round is automatically played
+12. The scores tally as you play the rounds
+13. At the end of 4 rounds the final score is displayed
+14. The user is asked if they want to play again, if yes, the program runs again, if no a goodbye message displays
+
+A brief explanation of an interesting piece of code in the project One thing that you learned during the project?
+
+- global - I learned that if you put global in front of a variable and add it to the outer module it makes the variable accessible throughout
+- time.sleep(0) - I learned that time.sleep(3) would delay the code displaying in the console to make the game more user-friendly
+- sys.exit(0) - I learned that this will exit the program at the specified point, I gave the user the option not to play the game at the start
+
+A difficult part of the project that you solved?
+
+- How to make it loop through the code for 4 rounds but without including the intro code and having ending code - I think I wrote the program without this in mind, if I’d planned it in earlier then it would of been easier, but, I managed it in the end by moving code around and using a simple for loop.
+- Also tallying the score was a nightmare! I tried recording it in a text file and gave up, worked out how to include it in the for loop above which was easier - it was due to accessing the variables that were built into functions, I discovered the global declaration which fixed it
+    What would you do if they had more time on the project?
+
+* See above items missing from MOSCOW
+* Bug fixes / little things I couldn’t work out how to do:
+    * Wording when it’s a draw says ‘it’s 1 ~ 1 to you’ would like to change to ‘it’s 1 ~ 1 You’re drawing’ but couldn’t figure out without writing a whole other section of code - ran out of time
+    * Spelling - not sure how to tell the program to accept spelling mistakes in the Pokemon names for example or spelling yes/no, heads/tails incorrectly
+    * To display the stat unit next to every instance of it e.g. lbs or ft
+    * Bug - your_stat_score = my_pokemon[computer_stat_choice] - says it’s expecting an int but gets a str - program still works but I’d like to resolve it, I’m not sure why/how
+
+
