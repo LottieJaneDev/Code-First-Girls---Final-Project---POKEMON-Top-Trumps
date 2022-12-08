@@ -2,6 +2,9 @@ import random
 import requests
 import sys
 
+my_pokemon = ''
+your_stats = ''
+
 
 def random_pokemon():
     pokemon_number = random.randint(1, 151)
@@ -19,6 +22,10 @@ def random_pokemon():
 
 
 def choose_pokemon():
+
+    global my_pokemon
+    global your_stats
+
     random_pokemon_1 = random_pokemon()
     random_pokemon_2 = random_pokemon()
     random_pokemon_3 = random_pokemon()
@@ -27,8 +34,6 @@ def choose_pokemon():
                                                          random_pokemon_2['name'].upper(),
                                                          random_pokemon_3['name'].upper()))
     pokemon_choice = input('Which pokemon do you want to use? ')
-
-    global my_pokemon
 
     if pokemon_choice == random_pokemon_1['name']:
         my_pokemon = random_pokemon_1
@@ -41,7 +46,7 @@ def choose_pokemon():
         choose_pokemon()
 
     print('You have chosen {}'.format(my_pokemon['name'].upper()))
-    global your_stats
+
     your_stats = (
         '{}\'S stats are: Height: {}ft, Weight: {}lbs, Experience: {} Points '.format(my_pokemon['name'].upper(),
                                                                                       my_pokemon['height'],
