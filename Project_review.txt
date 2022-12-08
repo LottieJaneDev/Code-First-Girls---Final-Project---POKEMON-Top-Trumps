@@ -84,5 +84,5 @@ A difficult part of the project that you solved?
     * Spelling - not sure how to tell the program to accept spelling mistakes in the Pokemon names for example or spelling yes/no, heads/tails incorrectly
     * To display the stat unit next to every instance of it e.g. lbs or ft
     * Bug - your_stat_score = my_pokemon[computer_stat_choice] - says it’s expecting an int but gets a str - program still works but I’d like to resolve it, I’m not sure why/how
-
+    * Bug - twice, I've had it repeat the same Pokemon choice at the end of a round and do the same for 3 rounds (it doesn't let you choose again, it just takes your first choice as your choice every time) I don't know why because it shouldn't be able to access that choice again. It's only happened twice when running the code so I'm not sure what's happening
 
