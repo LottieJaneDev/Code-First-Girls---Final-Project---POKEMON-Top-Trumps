@@ -4,6 +4,8 @@ import sys
 
 my_pokemon = ''
 your_stats = ''
+my_score = 0
+computer_score = 0
 
 
 def random_pokemon():
@@ -76,20 +78,21 @@ def computer_stat():
         return 'experience'
 
 
-def finish_game():
-    end_choice = input('Would you like to play another round? \n Yes or No \n')
-
-    if end_choice == 'y' or end_choice == 'yes':
-        print('\n')
-        choose_pokemon()
-
-    else:
-        return
+# def finish_game():
+#     end_choice = input('Would you like to play another round? \n Yes or No \n')
+#
+#     if end_choice == 'y' or end_choice == 'yes':
+#         print('\n')
+#         choose_pokemon()
+#
+#     else:
+#         return
 
 
 def play_game():
-    my_score = 0
-    computer_score = 0
+
+    global my_score
+    global computer_score
 
     computer_pokemon = random_pokemon()
     print('The computer has chosen {} for this Pokemon battle!'.format(computer_pokemon['name'].upper()))
@@ -132,7 +135,8 @@ def play_game():
             my_score += 1
             print('It\'s a tie! The score is {} - {}!'.format(my_score, computer_score))
 
-        finish_game()
+        return my_score, computer_score
+        # finish_game()
 
     else:
         print('Bad luck! You lost the coin toss :( \n The computer will now choose which stat to play with...')
@@ -167,14 +171,36 @@ def play_game():
             my_score += 1
             print('It\'s a tie! The score is {} - {}!'.format(my_score, computer_score))
 
-        finish_game()
+            return my_score, computer_score
+
+        # finish_game()
 
 
 def run():
+    global my_score
     choice = input('WELCOME! Are you ready to play Pokemon Top Trumps?! (Yes / No)\n')
     if choice == 'yes' or choice == 'y' or choice == 'Yes':
         print('Great! Lets go!')
-        choose_pokemon()
+
+        for number in range(3):
+            if number < 4:
+                choose_pokemon()
+
+
+
+        # def loop_program(x):
+        #     choose_pokemon()
+        #     return x + 1
+        #
+        # i = (1, 2, 3)
+        # print(map(loop_program, i))
+
+        # for x in range(3):
+        #     x = choose_pokemon()
+        #     return my_score
+        #     return computer_score
+
+        # choose_pokemon()
     if choice == 'no' or choice == 'n' or choice == 'No':
         print('Okay! Maybe we\'ll see you again soon! Goodbye!')
         sys.exit(0)
