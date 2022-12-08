@@ -51,7 +51,7 @@ def choose_pokemon():
         choose_pokemon()
 
     print('\nYou have chosen {}\n'.format(my_pokemon['name'].upper()))
-    time.sleep(3)
+    time.sleep(2)
     your_stats = (
         '{}\'S stats are: Height: {}ft, Weight: {}lbs, Experience: {} Points \n'.format(my_pokemon['name'].upper(),
                                                                                         my_pokemon['height'],
@@ -83,16 +83,16 @@ def computer_stat():
 
 
 def finish_game():
-    play_again = input('Would you like to play again? \n Yes or No \n')
+    play_again = input('Would you like to play again? \nYes or No \n')
 
     if play_again == 'y' or play_again == 'yes' or play_again == 'Yes':
         print('\n')
         time.sleep(3)
         run()
     else:
-        print('Okay! Thanks for playing! See you again soon!\n')
+        print('\nOkay! Thanks for playing! See you again soon!\n')
         time.sleep(2)
-        print('\nGame created by LottieJane1312 @ Github')
+        print('\n  *** Game created by LottieJane1312 @ Github ***')
         return
 
 
@@ -104,17 +104,17 @@ def round_results():
 
     if your_stat_score > computer_stat_score:
         my_score += 1
-        print('Yes! You won this round! The current score is {} - {} to you!\n'.format(my_score, computer_score))
+        print('Yes! You won this round! The current score is {} ~ {} to you!\n'.format(my_score, computer_score))
         time.sleep(4)
     if your_stat_score < computer_stat_score:
         computer_score += 1
-        print('Sorry, you lost this round! The current score is {} - {} to the computer\n'.format(my_score,
+        print('Sorry, you lost this round! The current score is {} ~ {} to the computer\n'.format(my_score,
                                                                                                   computer_score))
         time.sleep(4)
     if your_stat_score == computer_stat_score:
         computer_score += 1
         my_score += 1
-        print('It\'s a tie! The current score is {} - {}!\n'.format(my_score, computer_score))
+        print('It\'s a tie! The current score is {} ~ {}!\n'.format(my_score, computer_score))
         time.sleep(4)
 
     return my_score, computer_score
@@ -153,9 +153,9 @@ def play_game():
         print('\nYou have chosen the {} stat:\n'.format(stat_choice))
         time.sleep(2)
         print('\nYour Pokemon = {} : {}\'s {} is {} \n'
-              'Computer Pokemon = {} : {}\'s {} is {} \n'.format(my_pokemon['name'], my_pokemon['name'],
-                                                                 stat_choice, your_stat_score, computer_pokemon['name'],
-                                                                 computer_pokemon['name'],
+              'Computer Pokemon = {} : {}\'s {} is {} \n'.format(my_pokemon['name'].upper(), my_pokemon['name'].upper(),
+                                                                 stat_choice, your_stat_score, computer_pokemon['name'].upper(),
+                                                                 computer_pokemon['name'].upper(),
                                                                  stat_choice, computer_stat_score))
         time.sleep(4)
         round_results()
@@ -177,10 +177,9 @@ def play_game():
         your_stat_score = my_pokemon[computer_stat_choice]
         computer_stat_score = computer_pokemon[computer_stat_choice]
         print('Your Pokemon = {} : {}\'s {} is {} \n'
-              'Computer Pokemon = {} : {}\'s {} is {} \n'.format(my_pokemon['name'], my_pokemon['name'],
-                                                                 computer_stat_choice, your_stat_score,
-                                                                 computer_pokemon['name'],
-                                                                 computer_pokemon['name'],
+              'Computer Pokemon = {} : {}\'s {} is {} \n'.format(my_pokemon['name'].upper(), my_pokemon['name'].upper(),
+                                                                 computer_stat_choice, your_stat_score, computer_pokemon['name'].upper(),
+                                                                 computer_pokemon['name'].upper(),
                                                                  computer_stat_choice, computer_stat_score))
         time.sleep(4)
         round_results()
