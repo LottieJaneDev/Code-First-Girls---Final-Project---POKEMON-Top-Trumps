@@ -1,12 +1,12 @@
 import random
 import requests
 import sys
+import time
 
 my_pokemon = ''
 your_stats = ''
 my_score = 0
 computer_score = 0
-
 
 def random_pokemon():
     pokemon_number = random.randint(1, 151)
@@ -24,10 +24,8 @@ def random_pokemon():
 
 
 def choose_pokemon():
-
     global my_pokemon
     global your_stats
-
     random_pokemon_1 = random_pokemon()
     random_pokemon_2 = random_pokemon()
     random_pokemon_3 = random_pokemon()
@@ -35,7 +33,7 @@ def choose_pokemon():
     print('Your pokemon choices are: {}, {}, {} '.format(random_pokemon_1['name'].upper(),
                                                          random_pokemon_2['name'].upper(),
                                                          random_pokemon_3['name'].upper()))
-    pokemon_choice = input('Which pokemon do you want to use? ')
+    pokemon_choice = input('Which pokemon do you want to duel with?! \n')
 
     if pokemon_choice == random_pokemon_1['name']:
         my_pokemon = random_pokemon_1
@@ -44,16 +42,15 @@ def choose_pokemon():
     elif pokemon_choice == random_pokemon_3['name']:
         my_pokemon = random_pokemon_3
     else:
-        print('Hmmm.. it seems you have input an incorrect value, try that again')
+        print('Hmm.. it seems you have input an incorrect value, try that again\n')
         choose_pokemon()
 
-    print('You have chosen {}'.format(my_pokemon['name'].upper()))
-
+    print('\nYou have chosen {}\n'.format(my_pokemon['name'].upper()))
     your_stats = (
-        '{}\'S stats are: Height: {}ft, Weight: {}lbs, Experience: {} Points '.format(my_pokemon['name'].upper(),
-                                                                                      my_pokemon['height'],
-                                                                                      my_pokemon['weight'],
-                                                                                      my_pokemon['experience']))
+        '{}\'S stats are: Height: {}ft, Weight: {}lbs, Experience: {} Points \n'.format(my_pokemon['name'].upper(),
+                                                                                        my_pokemon['height'],
+                                                                                        my_pokemon['weight'],
+                                                                                        my_pokemon['experience']))
     print(your_stats)
     play_game()
 
@@ -78,102 +75,93 @@ def computer_stat():
         return 'experience'
 
 
-# def finish_game():
-#     end_choice = input('Would you like to play another round? \n Yes or No \n')
-#
-#     if end_choice == 'y' or end_choice == 'yes':
-#         print('\n')
-#         choose_pokemon()
-#
-#     else:
-#         return
+def finish_game():
+    play_again = input('Would you like to play again? \n Yes or No \n')
+
+    if play_again == 'y' or play_again == 'yes' or play_again == 'Yes':
+        print('\n')
+        run()
+    else:
+        print('Okay! Thanks for playing! See you again soon! *wave*')
+        return
 
 
 def play_game():
-
     global my_score
     global computer_score
 
     computer_pokemon = random_pokemon()
-    print('The computer has chosen {} for this Pokemon battle!'.format(computer_pokemon['name'].upper()))
+    print('The computer has chosen {} for this Pokemon battle!\n'.format(computer_pokemon['name'].upper()))
 
     choose_heads_tails = heads_tails()
     toss_result = coin_toss()
-
-    print('You have chosen {}!'.format(choose_heads_tails.upper()))
-    print('The result of the coin toss is (DRUM ROLL PLEASE)... {}!'.format(toss_result.upper()))
+    print('\nYou have chosen {}!'.format(choose_heads_tails.upper()))
+    print('The result of the coin toss is... {}!'.format(toss_result.upper()))
 
     if toss_result == choose_heads_tails:
-        print('Congratulations! You have won the coin toss! \n Now, which stat would you like to play? \n'
-              'Here\'s a reminder of your stats:\n')
-
+        print('Congratulations! You have won the coin toss! \nNow, which stat would you like to play??'
+              ' Here\'s a reminder of your stats:\n')
         print(your_stats)
 
         stat_choice = input('You can choose between: '
-                            '\n Experience - the Base Experience points you will gain for defeating this Pokemon '
-                            '\n Height - the height of your Pokemon (tallest wins!) '
-                            '\n Weight - the weight of your Pokemon (heaviest wins!)\n')
+                            '\n * Experience - the Base Experience points you will gain for defeating this Pokemon '
+                            '\n * Height - the height of your Pokemon (tallest wins!) '
+                            '\n * Weight - the weight of your Pokemon (heaviest wins!)\n')
 
         your_stat_score = my_pokemon[stat_choice]
         computer_stat_score = computer_pokemon[stat_choice]
-
-        print('You have chosen the {} stat. \n'
-              'Your Pokemon = {} - {}\'s {} is {} \n'
-              'Computer Pokemon = {} - {}\'s {} is {} \n'.format(stat_choice, my_pokemon['name'], my_pokemon['name'],
+        print('\nYou have chosen the {} stat:\n'
+              '\nYour Pokemon = {} : {}\'s {} is {} \n'
+              'Computer Pokemon = {} : {}\'s {} is {} \n'.format(stat_choice, my_pokemon['name'], my_pokemon['name'],
                                                                  stat_choice, your_stat_score, computer_pokemon['name'],
                                                                  computer_pokemon['name'],
                                                                  stat_choice, computer_stat_score))
-
         if your_stat_score > computer_stat_score:
             my_score += 1
-            print('Yes! You won this round! The score was {} - {} to you!'.format(my_score, computer_score))
+            print('Yes! You won this round! The current score is {} - {} to you!\n'.format(my_score, computer_score))
         if your_stat_score < computer_stat_score:
             computer_score += 1
-            print('Sorry, you lost this round! The score was {} - {} to the computer'.format(my_score, computer_score))
+            print('Sorry, you lost this round! The current score is {} - {} to the computer\n'.format(my_score,
+                                                                                                      computer_score))
         if your_stat_score == computer_stat_score:
             computer_score += 1
             my_score += 1
-            print('It\'s a tie! The score is {} - {}!'.format(my_score, computer_score))
+            print('It\'s a tie! The current score is {} - {}!\n'.format(my_score, computer_score))
 
         return my_score, computer_score
-        # finish_game()
 
     else:
-        print('Bad luck! You lost the coin toss :( \n The computer will now choose which stat to play with...')
-        print('First, here\'s a reminder of your stats:\n')
+        print('Bad luck! You lost the coin toss :(\nThe computer will now choose which stat to play with...')
+        print('\nFirst, here\'s a reminder of your stats:\n')
         print(your_stats)
-        print('\n Experience - the Base Experience points you will gain for defeating this Pokemon '
-              '\n Height - the height of your Pokemon (tallest wins!) '
-              '\n Weight - the weight of your Pokemon (heaviest wins!)\n')
+        print(' * Experience - the Base Experience points you will gain for defeating this Pokemon '
+              '\n * Height - the height of your Pokemon (tallest wins!) '
+              '\n * Weight - the weight of your Pokemon (heaviest wins!)\n')
 
         computer_stat_choice = computer_stat()
-
-        print('\n The computer has chosen {}!\n'.format(computer_stat_choice.upper()))
+        print('The computer has chosen {}!\n'.format(computer_stat_choice.upper()))
 
         your_stat_score = my_pokemon[computer_stat_choice]
         computer_stat_score = computer_pokemon[computer_stat_choice]
-
-        print('Your Pokemon = {} - {}\'s {} is {} \n'
-              'Computer Pokemon = {} - {}\'s {} is {} \n'.format(my_pokemon['name'], my_pokemon['name'],
+        print('Your Pokemon = {} : {}\'s {} is {} \n'
+              'Computer Pokemon = {} : {}\'s {} is {} \n'.format(my_pokemon['name'], my_pokemon['name'],
                                                                  computer_stat_choice, your_stat_score,
                                                                  computer_pokemon['name'],
                                                                  computer_pokemon['name'],
                                                                  computer_stat_choice, computer_stat_score))
-
         if your_stat_score > computer_stat_score:
             my_score += 1
-            print('Yes! You won this round! The score was {} - {} to you!'.format(my_score, computer_score))
+            print('Yes! You won this round! The current score is {} - {} to you!\n'.format(my_score, computer_score))
         if your_stat_score < computer_stat_score:
             computer_score += 1
-            print('Sorry, you lost this round! The score was {} - {} to the computer'.format(my_score, computer_score))
+            print('Sorry, you lost this round! The current score is {} - {} to the computer\n'.format(my_score,
+                                                                                                      computer_score))
         if your_stat_score == computer_stat_score:
             computer_score += 1
             my_score += 1
-            print('It\'s a tie! The score is {} - {}!'.format(my_score, computer_score))
+            print('It\'s a tie! The current score is {} - {}!\n'.format(my_score, computer_score))
 
             return my_score, computer_score
-
-        # finish_game()
 
 
 def run():
@@ -186,21 +174,21 @@ def run():
             if number < 4:
                 choose_pokemon()
 
+        print('That\'s the end of the game! The final score is:\n')
+        time.sleep(3)
+        print('*\n'
+              '*\n'
+              '*\n'
+              '*\n'
+              '\n   You  {} ~ {}  Computer\n'.format(my_score, computer_score))
 
+        if computer_score > my_score:
+            print('Bad luck! The computer beat you this time :(')
+        else:
+            print('CONGRATULATIONS! YOU WON THE GAME!!! :D')
 
-        # def loop_program(x):
-        #     choose_pokemon()
-        #     return x + 1
-        #
-        # i = (1, 2, 3)
-        # print(map(loop_program, i))
+        finish_game()
 
-        # for x in range(3):
-        #     x = choose_pokemon()
-        #     return my_score
-        #     return computer_score
-
-        # choose_pokemon()
     if choice == 'no' or choice == 'n' or choice == 'No':
         print('Okay! Maybe we\'ll see you again soon! Goodbye!')
         sys.exit(0)
