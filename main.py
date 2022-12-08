@@ -7,6 +7,8 @@ my_pokemon = ''
 your_stats = ''
 my_score = 0
 computer_score = 0
+your_stat_score = ''
+computer_stat_score = ''
 
 def random_pokemon():
     pokemon_number = random.randint(1, 151)
@@ -53,23 +55,7 @@ def choose_pokemon():
                                                                                         my_pokemon['experience']))
     print(your_stats)
     play_game()
-# def find_pokemon():
-#     print('Your Pokemon choices are:')
-#     pokemon_data = []
-#     for x in range(3):
-#         random_pokemon = generate_random_pokemon()
-#         pokemon_data.append(random_pokemon)
-#         print((x+1), random_pokemon['name'])
-#     pokemon_choice = str(input('Which one would you like to choose? Select a number... \n'))
-#     if pokemon_choice == '1':
-#         return pokemon_data[0]
-#     if pokemon_choice == '2':
-#         return pokemon_data[1]
-#     if pokemon_choice == '3':
-#         return pokemon_data[2]
-#     else:
-#         print('You have entered an incorrect value, let\'s try again \n')
-#         run()
+
 
 def heads_tails():
     answer = input("To make it fair, we will toss a coin to decide who chooses which stat to do battle with! "
@@ -102,7 +88,33 @@ def finish_game():
         return
 
 
+def round_results():
+    global your_stat_score
+    global computer_stat_score
+    global my_score
+    global computer_score
+
+    if your_stat_score > computer_stat_score:
+        my_score += 1
+        print('Yes! You won this round! The current score is {} - {} to you!\n'.format(my_score, computer_score))
+        time.sleep(4)
+    if your_stat_score < computer_stat_score:
+        computer_score += 1
+        print('Sorry, you lost this round! The current score is {} - {} to the computer\n'.format(my_score,
+                                                                                                  computer_score))
+        time.sleep(4)
+    if your_stat_score == computer_stat_score:
+        computer_score += 1
+        my_score += 1
+        print('It\'s a tie! The current score is {} - {}!\n'.format(my_score, computer_score))
+        time.sleep(4)
+
+    return my_score, computer_score
+
+
 def play_game():
+    global your_stat_score
+    global computer_stat_score
     global my_score
     global computer_score
 
@@ -132,22 +144,7 @@ def play_game():
                                                                  stat_choice, your_stat_score, computer_pokemon['name'],
                                                                  computer_pokemon['name'],
                                                                  stat_choice, computer_stat_score))
-        if your_stat_score > computer_stat_score:
-            my_score += 1
-            print('Yes! You won this round! The current score is {} - {} to you!\n'.format(my_score, computer_score))
-            time.sleep(2)
-        if your_stat_score < computer_stat_score:
-            computer_score += 1
-            print('Sorry, you lost this round! The current score is {} - {} to the computer\n'.format(my_score,
-                                                                                                      computer_score))
-            time.sleep(2)
-        if your_stat_score == computer_stat_score:
-            computer_score += 1
-            my_score += 1
-            print('It\'s a tie! The current score is {} - {}!\n'.format(my_score, computer_score))
-            time.sleep(2)
-
-        return my_score, computer_score
+        round_results()
 
     else:
         print('Bad luck! You lost the coin toss :(\nThe computer will now choose which stat to play with...')
@@ -168,22 +165,7 @@ def play_game():
                                                                  computer_pokemon['name'],
                                                                  computer_pokemon['name'],
                                                                  computer_stat_choice, computer_stat_score))
-        if your_stat_score > computer_stat_score:
-            my_score += 1
-            print('Yes! You won this round! The current score is {} - {} to you!\n'.format(my_score, computer_score))
-            time.sleep(2)
-        if your_stat_score < computer_stat_score:
-            computer_score += 1
-            print('Sorry, you lost this round! The current score is {} - {} to the computer\n'.format(my_score,
-                                                                                                      computer_score))
-            time.sleep(2)
-        if your_stat_score == computer_stat_score:
-            computer_score += 1
-            my_score += 1
-            print('It\'s a tie! The current score is {} - {}!\n'.format(my_score, computer_score))
-            time.sleep(2)
-
-            return my_score, computer_score
+        round_results()
 
 
 def run():
